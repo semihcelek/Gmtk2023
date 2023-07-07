@@ -7,13 +7,6 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
-    "com.erkerkiii.gum": {
-      "version": "1.0.14",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.npmjs.org"
-    },
     "com.neuecc.unirx": {
       "version": "7.1.0",
       "depth": 0,

@@ -1,19 +1,19 @@
-﻿using System;
-using Gum.Composer;
-using Gum.Composer.Unity.Runtime;
-using SemihCelek.Gmtk2023.Model;
+﻿using SemihCelek.Gmtk2023.Model;
 using UnityEngine;
 using Zenject;
 
 namespace SemihCelek.Gmtk2023.PlayerModule.View
 {
-    public class PlayerView : MonoComposable
+    public class PlayerView : MonoBehaviour
     {
         [Inject]
         private IGameStateController _gameStateController;
 
         [Inject]
         private IGameInput _gameInput;
+        
+        [Inject]
+        private Transform _itemParentTransform;
         
         private bool _isLocked;
 
@@ -24,12 +24,14 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         private void ListenEvents()
         {
-            _gameInput.OnPrimaryExecute += PlayPrimarySkill;
+            _gameInput.OnPrimaryExecute += ExecutePrimarySkill;
         }
 
-        private void PlayPrimarySkill()
+        private void ExecutePrimarySkill()
         {
-            Debug.Log("lann");
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            go.transform.SetParent(_itemParentTransform);
+            go.transform.localPosition = Vector3.zero;
         }
 
         private void Update()
@@ -45,22 +47,16 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
         private void ApplyMovement()
         {
             float horizontalInput = _gameInput.HorizontalInput;
-            transform.position += horizontalInput * Time.deltaTime * Vector3.right;
+            transform.position += horizontalInput * Time.deltaTime * Vector3.right * 2.2f;
             
             transform.localScale = horizontalInput > 0f 
                 ? Vector3.one 
                 : new Vector3(-1f, 1f, 1f);
         }
 
-        protected override IAspect[] GetAspects()
-        {
-            // throw new NotImplementedException();
-            return Array.Empty<IAspect>();
-        }
-
         private void UnsubscribeFromEvents()
         {
-            _gameInput.OnPrimaryExecute -= PlayPrimarySkill;
+            _gameInput.OnPrimaryExecute -= ExecutePrimarySkill;
         }
 
         private void OnDisable()
