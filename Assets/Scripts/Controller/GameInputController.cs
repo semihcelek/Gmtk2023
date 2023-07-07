@@ -26,7 +26,8 @@ namespace SemihCelek.Gmtk2023.Controller
 
         public void Tick()
         {
-            _lastReceivedExecuteInputTime += Time.deltaTime * 1000;
+            float lastReceivedExecuteInputTime = Time.deltaTime * 1000;
+            _lastReceivedExecuteInputTime += lastReceivedExecuteInputTime;
             
             if (_gameStateController.GameState.HasFlag(GameState.Locked))
             {
@@ -39,9 +40,7 @@ namespace SemihCelek.Gmtk2023.Controller
             {
                 return;
             }
-
-            _lastReceivedExecuteInputTime = 0;
-                
+            
             CheckExecuteInputs();
         }
 
@@ -56,12 +55,15 @@ namespace SemihCelek.Gmtk2023.Controller
             if (Input.GetKeyUp(GameInputConfig.PRIMARY_EXECUTE_KEY_CODE))
             {
                 OnPrimaryExecute?.Invoke();
+                _lastReceivedExecuteInputTime = 0;
+                
                 return;
             }
             
             if (Input.GetKeyUp(GameInputConfig.SECONDARY_EXECUTE_KEY_CODE))
             {
                 OnSecondaryExecute?.Invoke();
+                _lastReceivedExecuteInputTime = 0;
             }
         }
     }
