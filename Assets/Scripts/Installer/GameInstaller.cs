@@ -5,7 +5,6 @@ using SemihCelek.Gmtk2023.Controller;
 using SemihCelek.Gmtk2023.Model;
 using SemihCelek.Gmtk2023.PlayerModule.Controller;
 using SemihCelek.Gmtk2023.PlayerModule.View;
-using UnityEngine.Rendering;
 using Zenject;
 
 namespace SemihCelek.Gmtk2023.Installer

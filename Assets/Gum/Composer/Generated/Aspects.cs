@@ -14,6 +14,20 @@ namespace Gum.Composer.Generated
 			 Value = arg0;
 		}
 	}
+	public readonly struct DamageAspect : IAspect
+	{
+		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Damage;
+
+		public Gum.Composer.AspectType Type => ASPECT_TYPE;
+
+		public readonly System.Int32 Value;
+
+		public DamageAspect(System.Int32 arg0)
+		{		
+
+			 Value = arg0;
+		}
+	}
 	public readonly struct SpeedAspect : IAspect
 	{
 		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Speed;

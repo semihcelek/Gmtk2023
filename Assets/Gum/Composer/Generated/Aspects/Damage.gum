@@ -1,0 +1,5 @@
+aspect Damage
+{
+	System.Int32 Value;
+
+}

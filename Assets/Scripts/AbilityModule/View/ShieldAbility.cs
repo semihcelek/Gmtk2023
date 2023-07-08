@@ -1,4 +1,5 @@
-﻿using Gum.Composer;
+﻿using DG.Tweening;
+using Gum.Composer;
 using Gum.Composer.Generated;
 using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.AbilityModule.Model;
@@ -12,6 +13,8 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
         
         public AbilityType AbilityType => AbilityType.Shield;
 
+        private float _angle;
+
         public void Setup(Transform parentTransform, Vector2 centerPivotPosition)
         {
             transform.SetParent(parentTransform);
@@ -21,12 +24,27 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
         
         protected override IAspect[] GetAspects()
         {
-            return new IAspect[] { new AbilityAspect(AbilityType) };
+            return new IAspect[] { new AbilityAspect(AbilityType)  };
         }
 
         public void ProcessAbility(bool finishStatus)
         {
-            throw new System.NotImplementedException();
+            if (finishStatus)
+            {
+                
+            }
+            
+            SetPositionAndOrientation(1f,Vector2.zero);
         }
+
+        private void SetPositionAndOrientation(float currentPosition, Vector2 nextPosition)
+        {
+            
+        }
+
+        private Sequence CancellingSequence()
+        {
+            return DOTween.Sequence();
+        } 
     }
 }
