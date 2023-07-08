@@ -2,7 +2,9 @@
 using Gum.Composer.Generated;
 using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.Model;
+using SemihCelek.Gmtk2023.PlayerModule.Controller;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace SemihCelek.Gmtk2023.PlayerModule.View
@@ -14,9 +16,12 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         [Inject]
         private IGameInput _gameInput;
-        
+
         [Inject]
-        private Transform _itemParentTransform;
+        private PlayerController _playerController;
+
+        [Inject]
+        public Transform itemParentTransform;
         
         private bool _isLocked;
 
@@ -36,12 +41,8 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
         private void ExecutePrimarySkill(bool keyDown)
         {
             _isExecutingPrimarySkill = keyDown;
-            
-            Debug.Log(_isExecutingPrimarySkill);
 
-            // GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            // go.transform.SetParent(_itemParentTransform);
-            // go.transform.localPosition = Vector3.zero;
+            _playerController.ExecutePrimarySkill(keyDown);
         }
 
         private void Update()

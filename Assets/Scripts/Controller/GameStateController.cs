@@ -3,7 +3,7 @@ using SemihCelek.Gmtk2023.Utility;
 
 namespace SemihCelek.Gmtk2023.Controller
 {
-    public class GameStateController : IGameStateController
+    public class GameStateController : IGameStateController, IController
     {
         public GameState GameState { get; private set; }
 

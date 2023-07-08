@@ -6,7 +6,7 @@ using Zenject;
 
 namespace SemihCelek.Gmtk2023.Controller
 {
-    public class GameInputController : IGameInput, ITickable
+    public class GameInputController : IGameInput, ITickable, IController
     {
         private readonly IGameStateController _gameStateController;
         

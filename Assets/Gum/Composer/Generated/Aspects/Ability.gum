@@ -1,0 +1,5 @@
+aspect Ability
+{
+	SemihCelek.Gmtk2023.AbilityModule.Model.AbilityType Value;
+
+}
