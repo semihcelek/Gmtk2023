@@ -1,0 +1,5 @@
+aspect Enemy
+{
+	SemihCelek.Gmtk2023.EnemyModule.Model.EnemyType Value;
+
+}

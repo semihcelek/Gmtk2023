@@ -1,0 +1,5 @@
+aspect Health
+{
+	System.Int32 Value;
+
+}
