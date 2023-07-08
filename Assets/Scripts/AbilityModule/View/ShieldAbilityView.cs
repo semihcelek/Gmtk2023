@@ -1,14 +1,12 @@
 ﻿using System;
 using DG.Tweening;
 using Gum.Composer;
-using Gum.Composer.Generated;
-using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.AbilityModule.Model;
 using UnityEngine;
 
 namespace SemihCelek.Gmtk2023.AbilityModule.View
 {
-    public class ShieldAbilityView : MonoComposable, IAbilityView
+    public class ShieldAbilityView : MonoBehaviour, IAbilityView
     {
         public AbilityType AbilityType => AbilityType.Shield;
 
@@ -26,11 +24,6 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             transform.localPosition = Vector3.zero;
         }
         
-        protected override IAspect[] GetAspects()
-        {
-            return new IAspect[] { new AbilityAspect(AbilityType)  };
-        }
-
         public void ProcessAbility(bool finishStatus)
         {
             if (finishStatus)
@@ -56,6 +49,11 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             
             return DOTween.Sequence()
                 .Append(_rotationParentTransform.DOLocalRotate(rotation, duration).SetEase(Ease.InOutSine));
-        } 
+        }
+
+        public Composition GetComposition()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

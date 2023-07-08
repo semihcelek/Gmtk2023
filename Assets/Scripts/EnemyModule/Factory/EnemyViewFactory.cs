@@ -21,7 +21,7 @@ namespace SemihCelek.Gmtk2023.EnemyModule.Factory
         {
             EnemyView enemyView = _instantiator.InstantiatePrefabResourceForComponent<EnemyView>(ENEMY_PREFAB_NAME, parentTransform);
 
-            enemyView.transform.position = Vector3.zero; 
+            enemyView.transform.localPosition = Vector3.zero; 
             
             enemyView.Construct(composition);
             

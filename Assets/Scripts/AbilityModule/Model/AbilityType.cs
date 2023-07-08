@@ -3,6 +3,8 @@
     public enum AbilityType
     {
         Shield,
+        Bow,
+        Arrow,
         Slide
     }
 }
