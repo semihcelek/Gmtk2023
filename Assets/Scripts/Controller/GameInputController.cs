@@ -14,10 +14,12 @@ namespace SemihCelek.Gmtk2023.Controller
 
         public float VerticalInput { get; private set; }
         
-        public event Action OnPrimaryExecute;
-        public event Action OnSecondaryExecute;
+        public event Action<bool> OnPrimaryExecute;
+        public event Action<bool> OnSecondaryExecute;
 
         private float _lastReceivedExecuteInputTime;
+
+        private KeyCode _currentExecuteKeyCode;
 
         public GameInputController(IGameStateController gameStateController)
         {
@@ -52,19 +54,46 @@ namespace SemihCelek.Gmtk2023.Controller
 
         private void CheckExecuteInputs()
         {
-            if (Input.GetKeyUp(GameInputConfig.PRIMARY_EXECUTE_KEY_CODE))
+            bool isPrimaryOnUse = CheckForKeyInput(GameInputConfig.PRIMARY_EXECUTE_KEY_CODE, PrimaryExecute);
+            if (isPrimaryOnUse)
             {
-                OnPrimaryExecute?.Invoke();
                 _lastReceivedExecuteInputTime = 0;
-                
                 return;
             }
-            
-            if (Input.GetKeyUp(GameInputConfig.SECONDARY_EXECUTE_KEY_CODE))
+
+            bool isSecondaryOnUse = CheckForKeyInput(GameInputConfig.SECONDARY_EXECUTE_KEY_CODE, SecondaryExecute);
+            if (isSecondaryOnUse)
             {
-                OnSecondaryExecute?.Invoke();
                 _lastReceivedExecuteInputTime = 0;
+                return;
             }
         }
+
+        private bool CheckForKeyInput(KeyCode keyCode, Action<bool> callback)
+        {
+            bool isKeyDown = Input.GetKeyDown(keyCode);
+            bool isKeyUp = Input.GetKeyUp(keyCode);
+            bool isKeyHolding = Input.GetKey(keyCode);
+
+            if (isKeyUp && keyCode == _currentExecuteKeyCode)
+            {
+                callback?.Invoke(false);
+                return false;
+            }
+
+            if (isKeyDown)
+            {
+                _currentExecuteKeyCode = keyCode;
+                
+                callback?.Invoke(true);
+                return true;
+            }
+
+            return false;
+        }
+        
+
+        private void PrimaryExecute(bool value) => OnPrimaryExecute?.Invoke(value);
+        private void SecondaryExecute(bool value) => OnSecondaryExecute?.Invoke(value);
     }
 }

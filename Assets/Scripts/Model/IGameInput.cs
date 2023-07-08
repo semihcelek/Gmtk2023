@@ -7,7 +7,7 @@ namespace SemihCelek.Gmtk2023.Model
         float HorizontalInput { get; }
         float VerticalInput { get; }
 
-        event Action OnPrimaryExecute;
-        event Action OnSecondaryExecute;
+        event Action<bool> OnPrimaryExecute;
+        event Action<bool> OnSecondaryExecute;
     }
 }
