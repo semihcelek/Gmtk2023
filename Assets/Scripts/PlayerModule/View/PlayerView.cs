@@ -22,6 +22,9 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         [Inject]
         public Transform itemParentTransform;
+
+        [Inject]
+        public Vector3 pivotPosition;
         
         private bool _isLocked;
 
@@ -58,8 +61,12 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
         private void ApplyMovement()
         {
             float horizontalInput = _gameInput.HorizontalInput;
-            transform.position += horizontalInput * Time.deltaTime * Vector3.right * Composition.GetAspect<SpeedAspect>().Value;
+            if (horizontalInput == 0f)
+            {
+                return;
+            }            
             
+            transform.position += horizontalInput * Time.deltaTime * Vector3.right * Composition.GetAspect<SpeedAspect>().Value;
             transform.localScale = horizontalInput > 0f 
                 ? Vector3.one 
                 : new Vector3(-1f, 1f, 1f);

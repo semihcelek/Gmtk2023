@@ -17,8 +17,6 @@ namespace SemihCelek.Gmtk2023.Controller
         public event Action<bool> OnPrimaryExecute;
         public event Action<bool> OnSecondaryExecute;
 
-        private float _lastReceivedExecuteInputTime;
-
         private KeyCode _currentExecuteKeyCode;
 
         public GameInputController(IGameStateController gameStateController)
@@ -28,9 +26,6 @@ namespace SemihCelek.Gmtk2023.Controller
 
         public void Tick()
         {
-            float lastReceivedExecuteInputTime = Time.deltaTime * 1000;
-            _lastReceivedExecuteInputTime += lastReceivedExecuteInputTime;
-            
             if (_gameStateController.GameState.HasFlag(GameState.Locked))
             {
                 return;
@@ -38,11 +33,6 @@ namespace SemihCelek.Gmtk2023.Controller
             
             CheckAxisInputs();
 
-            if (_lastReceivedExecuteInputTime < GameInputTimeIntervalConfig.EXECUTE_RATE_LIMIT_MILLISECOND)
-            {
-                return;
-            }
-            
             CheckExecuteInputs();
         }
 
@@ -57,14 +47,12 @@ namespace SemihCelek.Gmtk2023.Controller
             bool isPrimaryOnUse = CheckForKeyInput(GameInputConfig.PRIMARY_EXECUTE_KEY_CODE, PrimaryExecute);
             if (isPrimaryOnUse)
             {
-                _lastReceivedExecuteInputTime = 0;
                 return;
             }
 
             bool isSecondaryOnUse = CheckForKeyInput(GameInputConfig.SECONDARY_EXECUTE_KEY_CODE, SecondaryExecute);
             if (isSecondaryOnUse)
             {
-                _lastReceivedExecuteInputTime = 0;
                 return;
             }
         }
@@ -92,7 +80,6 @@ namespace SemihCelek.Gmtk2023.Controller
             return false;
         }
         
-
         private void PrimaryExecute(bool value) => OnPrimaryExecute?.Invoke(value);
         private void SecondaryExecute(bool value) => OnSecondaryExecute?.Invoke(value);
     }
