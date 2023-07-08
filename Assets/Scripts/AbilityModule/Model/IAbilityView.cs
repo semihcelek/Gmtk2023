@@ -8,7 +8,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.Model
     {
         AbilityType AbilityType { get; }
 
-        void Setup(Transform parentTransform, Vector2 centerPivotPosition);
+        void Setup(Transform parentTransform);
 
         void ProcessAbility(bool finishStatus);
         

@@ -27,14 +27,9 @@ namespace SemihCelek.Gmtk2023.PlayerModule.Controller
 
         public void Initialize()
         {
-            SetupAbilities();
+            _abilityController.SetupAbilities(_playerAbilityContainer, _primaryAbility, _playerView.transform);
         }
-
-        private void SetupAbilities()
-        {
-            IAbilityView abilityView = _playerAbilityContainer[_primaryAbility];
-            abilityView.Setup(_playerView.itemParentTransform, _playerView.pivotPosition);
-        }
+        
 
         public void ExecutePrimarySkill(bool isStarting)
         {

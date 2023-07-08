@@ -15,19 +15,15 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
         [SerializeField]
         private Transform _rotationParentTransform;
 
-        private Vector2 _centerPivot;
-
         private float _currentAngle;
 
         private Sequence _sequence;
         
-        public void Setup(Transform parentTransform, Vector2 centerPivotPosition)
+        public void Setup(Transform parentTransform)
         {
             transform.SetParent(parentTransform);
             
             transform.localPosition = Vector3.zero;
-            
-            _centerPivot = centerPivotPosition;
         }
         
         protected override IAspect[] GetAspects()
