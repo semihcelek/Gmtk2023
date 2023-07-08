@@ -1,4 +1,4 @@
-﻿using SemihCelek.Gmtk2023.AIModule.Controller;
+﻿using SemihCelek.Gmtk2023.Controller;
 using Zenject;
 
 namespace SemihCelek.Gmtk2023.EnemyModule.Installer

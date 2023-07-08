@@ -2,7 +2,6 @@
 using SemihCelek.Gmtk2023.AbilityModule.Controller;
 using SemihCelek.Gmtk2023.AbilityModule.Factory;
 using SemihCelek.Gmtk2023.AbilityModule.Model;
-using SemihCelek.Gmtk2023.AIModule.Controller;
 using SemihCelek.Gmtk2023.Controller;
 using SemihCelek.Gmtk2023.EnemyModule.Controller;
 using SemihCelek.Gmtk2023.EnemyModule.Factory;
