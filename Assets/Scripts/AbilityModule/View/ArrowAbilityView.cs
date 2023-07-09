@@ -49,20 +49,20 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
 
         public void LaunchFrom(Vector3 direction, float power)
         {
-            
+            transform.SetParent(null);
+            TogglePhysics(true);
             _rigidbody2D.velocity = direction * power;
             _isLaunched = true;
-            
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            _isLaunched = false;
+            Debug.Log(other.gameObject.name);
 
-            TogglePhysics(false);
+            Debug.Log(other.otherCollider.name);
         }
 
-        private void TogglePhysics(bool value)
+        public void TogglePhysics(bool value)
         {
             _rigidbody2D.isKinematic = !value;
             

@@ -68,9 +68,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
                 return;
             }
             
-            // _shootingArrow.transform.SetParent(null);
             _shootingArrow.LaunchFrom(transform.right, 20);
-            
         }
 
         private Sequence StretchBowSequence()
@@ -82,6 +80,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             _shootingArrow = arrowView;
             
             arrowView.Setup(_visualParentTransform);
+            arrowView.TogglePhysics(false);
             
             Vector2 direction = _playerView.transform.position - transform.position;
             

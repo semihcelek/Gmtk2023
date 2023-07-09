@@ -3,15 +3,19 @@ using DG.Tweening;
 using Gum.Composer;
 using SemihCelek.Gmtk2023.AbilityModule.Model;
 using UnityEngine;
+using Zenject;
 
 namespace SemihCelek.Gmtk2023.AbilityModule.View
 {
     public class ShieldAbilityView : MonoBehaviour, IAbilityView
     {
-        public AbilityType AbilityType => AbilityType.Shield;
-
-        [SerializeField]
+        [Inject]
         private Transform _rotationParentTransform;
+
+        [Inject]
+        private Collider2D _collider2D;
+
+        public AbilityType AbilityType => AbilityType.Shield;
 
         private float _currentAngle;
 
