@@ -20,3 +20,4 @@ System.IntPtr
 System.UIntPtr
 SemihCelek.Gmtk2023.AbilityModule.Model.AbilityType
 SemihCelek.Gmtk2023.EnemyModule.Model.EnemyType
+SemihCelek.Gmtk2023.Model.Difficulty

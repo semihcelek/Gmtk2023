@@ -4,6 +4,7 @@ namespace Gum.Composer.Generated
 	{
 		Ability,
 		Damage,
+		Difficulty,
 		Enemy,
 		GameObject,
 		Health,

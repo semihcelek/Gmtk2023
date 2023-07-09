@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.erkerkiii.gum":  "1.0.15",
     "com.cysharp.unitask": "2.3.3",
     "com.neuecc.unirx": "7.1.0",
     "com.unity.2d.animation": "9.0.3",
@@ -52,6 +53,13 @@
         "com.cysharp.unitask",
         "com.neuecc.unirx",
         "com.openupm"
+      ]
+    },
+    {
+      "name": "NPM",
+      "url": "https://registry.npmjs.org",
+      "scopes": [
+        "com.erkerkiii.gum"
       ]
     }
   ]

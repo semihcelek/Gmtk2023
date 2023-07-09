@@ -28,6 +28,20 @@ namespace Gum.Composer.Generated
 			 Value = arg0;
 		}
 	}
+	public readonly struct DifficultyAspect : IAspect
+	{
+		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Difficulty;
+
+		public Gum.Composer.AspectType Type => ASPECT_TYPE;
+
+		public readonly SemihCelek.Gmtk2023.Model.Difficulty Value;
+
+		public DifficultyAspect(SemihCelek.Gmtk2023.Model.Difficulty arg0)
+		{		
+
+			 Value = arg0;
+		}
+	}
 	public readonly struct EnemyAspect : IAspect
 	{
 		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Enemy;

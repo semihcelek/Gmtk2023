@@ -1,0 +1,5 @@
+aspect Difficulty
+{
+	SemihCelek.Gmtk2023.Model.Difficulty Value;
+
+}
