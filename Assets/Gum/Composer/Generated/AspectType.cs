@@ -9,6 +9,7 @@ namespace Gum.Composer.Generated
 		GameObject,
 		Health,
 		LockedRotation,
+		Position,
 		Rigidbody2D,
 		Speed,
 	}

@@ -1,0 +1,5 @@
+aspect Position
+{
+	UnityEngine.Vector3 Value;
+
+}

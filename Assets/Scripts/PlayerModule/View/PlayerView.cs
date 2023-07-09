@@ -4,7 +4,6 @@ using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.Model;
 using SemihCelek.Gmtk2023.PlayerModule.Controller;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace SemihCelek.Gmtk2023.PlayerModule.View
@@ -21,7 +20,7 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
         private PlayerController _playerController;
 
         [Inject]
-        public Transform itemParentTransform;
+        private Transform itemParentTransform;
 
         [Inject]
         public Vector3 pivotPosition;
