@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using Gum.Composer;
+using Gum.Composer.Generated;
 using SemihCelek.Gmtk2023.AbilityModule.Model;
 using UnityEngine;
 using Zenject;
@@ -57,7 +58,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
 
         public Composition GetComposition()
         {
-            throw new NotImplementedException();
+            return Composition.Create(new IAspect[] { new AbilityAspect(AbilityType) });
         }
     }
 }

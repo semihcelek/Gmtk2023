@@ -44,7 +44,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
         
         public void ProcessAbility(bool finishStatus)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void LaunchFrom(Vector3 direction, float power)
@@ -53,13 +53,6 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             TogglePhysics(true);
             _rigidbody2D.velocity = direction * power;
             _isLaunched = true;
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            Debug.Log(other.gameObject.name);
-
-            Debug.Log(other.otherCollider.name);
         }
 
         public void TogglePhysics(bool value)

@@ -17,7 +17,6 @@ namespace SemihCelek.Gmtk2023.StageModule.Controller
 
         private void InitializeStage(StageView gameStage)
         {
-            Debug.Log("start");
             gameStage.InitializeStage();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Gum.Composer;
+﻿using System;
+using Gum.Composer;
 using Gum.Composer.Generated;
 using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.Model;
@@ -18,9 +19,6 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         [Inject]
         private PlayerController _playerController;
-
-        [Inject]
-        private Transform itemParentTransform;
 
         [Inject]
         public Vector3 pivotPosition;
@@ -83,10 +81,7 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         protected override IAspect[] GetAspects()
         {
-            return new IAspect[]
-            {
-                new SpeedAspect(2)
-            };
+            return Array.Empty<IAspect>();
         }
     }
 }

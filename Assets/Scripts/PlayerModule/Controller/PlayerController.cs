@@ -30,7 +30,6 @@ namespace SemihCelek.Gmtk2023.PlayerModule.Controller
             _abilityController.SetupAbilities(_playerAbilityContainer, _primaryAbility, _playerView.transform);
         }
         
-
         public void ExecutePrimarySkill(bool isStarting)
         {
             _abilityController.ProcessAbility(_playerAbilityContainer[_primaryAbility], isStarting);
