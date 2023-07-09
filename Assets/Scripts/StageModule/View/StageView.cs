@@ -1,4 +1,5 @@
-﻿using SemihCelek.Gmtk2023.EnemyModule.Controller;
+﻿using Gum.Composer.Generated;
+using SemihCelek.Gmtk2023.EnemyModule.Controller;
 using SemihCelek.Gmtk2023.EnemyModule.View;
 using SemihCelek.Gmtk2023.LevelModule.View;
 using UnityEngine;
@@ -31,8 +32,10 @@ namespace SemihCelek.Gmtk2023.StageModule.View
             EnemyView[] enemyViews = new EnemyView[_enemySpawnPointViews.Length];
             for (int index = 0; index < _enemySpawnPointViews.Length; index++)
             {
-                enemyViews[index] = _enemySpawner.SpawnEnemyAtPosition(_enemySpawnPointViews[index].EnemyAssetData,
-                    _enemyParentTransform);
+                EnemySpawnPointView enemySpawnPointView = _enemySpawnPointViews[index];
+                
+                enemyViews[index] = _enemySpawner.SpawnEnemyAtPosition(enemySpawnPointView.EnemyAssetData,
+                    _enemyParentTransform, enemySpawnPointView.Composition.GetAspect<PositionAspect>().Value);
             }
         }
 

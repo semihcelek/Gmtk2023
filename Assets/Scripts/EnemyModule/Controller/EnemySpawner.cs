@@ -14,9 +14,11 @@ namespace SemihCelek.Gmtk2023.EnemyModule.Controller
             _enemyFactory = enemyFactory;
         }
 
-        public EnemyView SpawnEnemyAtPosition(EnemyAssetData enemyAssetData, Transform parentTransform)
-        { 
-            return _enemyFactory.Create(enemyAssetData.GetComposition(), parentTransform);
+        public EnemyView SpawnEnemyAtPosition(EnemyAssetData enemyAssetData, Transform parentTransform, Vector3 position)
+        {
+            EnemyView enemyView = _enemyFactory.Create(enemyAssetData.GetComposition(), parentTransform);
+            enemyView.transform.position = position;
+            return enemyView;
         }
         
         public EnemyView[] SpawnEnemyMultipleAtPosition(EnemyAssetData enemyAssetData, Transform parentTransform, int count)
