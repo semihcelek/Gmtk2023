@@ -17,3 +17,4 @@ MonoBehaviour:
   _initialDamageAmount: 5
   _maxHealth: 45
   _enemyVisual: {fileID: 4231549977869838300, guid: 4fa6ab81202d0764e9dcc30195b40be3, type: 3}
+  _isMirroringLocked: 1

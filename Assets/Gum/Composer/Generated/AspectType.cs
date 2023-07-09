@@ -8,6 +8,8 @@ namespace Gum.Composer.Generated
 		Enemy,
 		GameObject,
 		Health,
+		LockedRotation,
+		Rigidbody2D,
 		Speed,
 	}
 }

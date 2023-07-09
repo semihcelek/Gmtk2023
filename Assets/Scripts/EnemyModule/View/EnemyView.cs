@@ -34,6 +34,8 @@ namespace SemihCelek.Gmtk2023.EnemyModule.View
         private bool _isLocked;
         
         private bool _executingPrimarySkill;
+        
+        private bool _isMirroringLocked;
 
         public void Construct(Composition composition)
         {
@@ -62,6 +64,8 @@ namespace SemihCelek.Gmtk2023.EnemyModule.View
         {
             _visualGameObject =
                 Instantiate(EnemyComposition.GetAspect<GameObjectAspect>().Value, transform);
+
+            _isMirroringLocked = EnemyComposition.HasAspect(LockedRotationAspect.ASPECT_TYPE);
         }
 
         private void SetupEnemyAbilities()
@@ -93,6 +97,12 @@ namespace SemihCelek.Gmtk2023.EnemyModule.View
             }            
             
             transform.position += horizontalInput * Time.deltaTime * Vector3.right * 2;
+
+            if (_isMirroringLocked)
+            {
+                return;
+            }
+
             transform.localScale = horizontalInput > 0f 
                 ? Vector3.one 
                 : new Vector3(-1f, 1f, 1f);

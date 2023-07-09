@@ -1,0 +1,5 @@
+aspect Rigidbody2D
+{
+	UnityEngine.Rigidbody2D Value;
+
+}

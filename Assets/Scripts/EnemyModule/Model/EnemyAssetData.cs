@@ -24,16 +24,26 @@ namespace SemihCelek.Gmtk2023.EnemyModule.Model
         [SerializeField]
         private GameObject _enemyVisual;
 
+        [SerializeField]
+        private bool _isMirroringLocked;
+        
         public Composition GetComposition()
         {
-            return Composition.Create(new IAspect[]
+            Composition composition = Composition.Create(new IAspect[]
             {
                 new EnemyAspect(_enemyType),
                 new AbilityAspect(_abilityType),
                 new DamageAspect(_initialDamageAmount),
                 new HealthAspect(_maxHealth),
-                new GameObjectAspect(_enemyVisual)
+                new GameObjectAspect(_enemyVisual),
             });
+
+            if (_isMirroringLocked)
+            {
+                composition.AddAspect(new LockedRotationAspect());   
+            }
+            
+            return composition;
         }
     }
 }

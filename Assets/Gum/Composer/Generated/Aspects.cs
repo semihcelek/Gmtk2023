@@ -84,6 +84,34 @@ namespace Gum.Composer.Generated
 			 Value = arg0;
 		}
 	}
+	public readonly struct LockedRotationAspect : IAspect
+	{
+		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.LockedRotation;
+
+		public Gum.Composer.AspectType Type => ASPECT_TYPE;
+
+		public readonly System.Boolean Value;
+
+		public LockedRotationAspect(System.Boolean arg0)
+		{		
+
+			 Value = arg0;
+		}
+	}
+	public readonly struct Rigidbody2DAspect : IAspect
+	{
+		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Rigidbody2D;
+
+		public Gum.Composer.AspectType Type => ASPECT_TYPE;
+
+		public readonly UnityEngine.Rigidbody2D Value;
+
+		public Rigidbody2DAspect(UnityEngine.Rigidbody2D arg0)
+		{		
+
+			 Value = arg0;
+		}
+	}
 	public readonly struct SpeedAspect : IAspect
 	{
 		public static readonly Gum.Composer.AspectType ASPECT_TYPE = (int)AspectType.Speed;

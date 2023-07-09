@@ -24,6 +24,8 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
 
         private AbilityType UtilizingAbility => AbilityType.Arrow;
 
+        private ArrowAbilityView _shootingArrow;
+
         public void Setup(Transform parentTransform)
         {
             transform.SetParent(parentTransform);
@@ -56,35 +58,38 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
                 _sequence.Kill();
             }
             
-            _sequence = StretchBowSequence(0);
+            _sequence = StretchBowSequence();
         }
 
         private async UniTask ShotBowSequence()
         {
-            // _isLocked = true;
+            if (_shootingArrow ==null)
+            {
+                return;
+            }
+            
+            // _shootingArrow.transform.SetParent(null);
+            _shootingArrow.LaunchFrom(transform.right, 20);
             
         }
 
-        private Sequence StretchBowSequence(int angle)
+        private Sequence StretchBowSequence()
         {
-            Debug.Log("bu");
             const float duration = 1.3f;
 
-            
-
             ArrowAbilityView arrowView = (ArrowAbilityView)_abilityViewFactory.Create(UtilizingAbility);
-            arrowView.transform.SetParent(_visualParentTransform);
-            arrowView.transform.localPosition = Vector3.zero;
-
-            Vector3 yDifference = _playerView.transform.position + transform.position;
-
-            float endValue = Vector3.Angle(_playerView.transform.position, transform.position);
-
-            Debug.Log(endValue);
+            Transform arrowViewTransform = arrowView.transform;
+            _shootingArrow = arrowView;
+            
+            arrowView.Setup(_visualParentTransform);
+            
+            Vector2 direction = _playerView.transform.position - transform.position;
+            
+            transform.right = direction;
+            arrowViewTransform.right = direction;
             
             return DOTween.Sequence()
-                .Append(DOTween.To(()=>_visualParentTransform.localEulerAngles.z, (z) => _visualParentTransform.localEulerAngles = new Vector3(0,0,z -90), endValue, duration))
-                .Join(arrowView.transform.DOLocalMoveX(-0.5f, duration).SetEase(Ease.OutQuint));
+                .Join(arrowViewTransform.DOLocalMoveX(-0.5f, duration).SetEase(Ease.OutQuint));
         }
 
         public Composition GetComposition()
