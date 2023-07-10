@@ -48,7 +48,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             {
                 _sequence.Kill();
                 
-                ShotBowSequence().Forget();
+                ShotBowAsync().Forget();
                 
                 return;
             }
@@ -61,7 +61,7 @@ namespace SemihCelek.Gmtk2023.AbilityModule.View
             _sequence = StretchBowSequence();
         }
 
-        private async UniTask ShotBowSequence()
+        private async UniTask ShotBowAsync()
         {
             if (_shootingArrow ==null)
             {

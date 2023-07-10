@@ -5,6 +5,7 @@ using SemihCelek.Gmtk2023.EnemyModule.Controller;
 using SemihCelek.Gmtk2023.Model;
 using UnityEngine;
 using Zenject;
+using AspectType = Gum.Composer.Generated.AspectType;
 
 namespace SemihCelek.Gmtk2023.EnemyModule.View
 {

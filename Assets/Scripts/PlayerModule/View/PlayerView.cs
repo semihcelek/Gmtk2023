@@ -1,5 +1,4 @@
-﻿using System;
-using Gum.Composer;
+﻿using Gum.Composer;
 using Gum.Composer.Generated;
 using Gum.Composer.Unity.Runtime;
 using SemihCelek.Gmtk2023.Model;
@@ -81,7 +80,10 @@ namespace SemihCelek.Gmtk2023.PlayerModule.View
 
         protected override IAspect[] GetAspects()
         {
-            return Array.Empty<IAspect>();
+            return new IAspect[]
+            {
+                new SpeedAspect(2)
+            };
         }
     }
 }
